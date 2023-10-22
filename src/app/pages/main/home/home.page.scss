@@ -1,0 +1,39 @@
+/* Estilo general del tablero */
+.board {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  
+  /* Estilo del contenedor de recepciones */
+  .recepcion-container {
+    min-height: 100px; /* Altura mínima para permitir el arrastre y soltado */
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  
+  /* Estilo de las tarjetas de recepción */
+  .recepcion {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
+  }
+  
+  /* Estilo cuando se arrastra una tarjeta */
+  .recepcion:active {
+    opacity: 0.7;
+  }
+
+  .recepcion {
+    /* Otros estilos */
+    touch-action: manipulation; /* Habilita el arrastre en dispositivos táctiles */
+  }
+  

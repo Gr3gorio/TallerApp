@@ -1,0 +1,19 @@
+<app-header title="Detalle Recepcion"></app-header>
+<ion-content>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-avatar>
+        <img [src]= "recepcion.image"/>
+      </ion-avatar>
+      <h2>{{ recepcion.name }}</h2>
+      <p>Patente: {{ recepcion.patente }}</p>
+      <p>Fecha de Ingreso : {{recepcion.fechaIngreso}}</p>
+      <p>Tipo de Vehiculo : {{recepcion.tipoVehiculo}}</p>
+      <p>Reparacion : {{recepcion.reparacion}}</p>
+      <p>Monto : {{recepcion.monto}}</p>
+      <!-- Otros campos de la recepción -->
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
