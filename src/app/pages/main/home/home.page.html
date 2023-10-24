@@ -16,8 +16,9 @@
                >
             <div *ngFor="let recepcion of board.recepcion"
                  class="recepcion" 
-                 (click)="navegarADetalle(recepcion.id)"
+                 
                  (click)="mostrarDatosRecepcion(recepcion)"
+
                  (dragstart)="onDragStart(recepcion.id, targetBoardIdx)"
                  (touchstart)="onTouchStart(recepcion.id, targetBoardIdx)"
                  draggable="true">

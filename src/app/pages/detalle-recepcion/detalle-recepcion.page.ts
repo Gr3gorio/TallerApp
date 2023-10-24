@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Recepcion } from 'src/app/models/recepcion.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -11,7 +11,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class DetalleRecepcionPage implements OnInit {
 
-  recepcion: Recepcion;
+  @Input() recepcion: Recepcion;
 
   constructor(
 
@@ -24,7 +24,7 @@ export class DetalleRecepcionPage implements OnInit {
   ) { 
 
     
-    this.route.paramMap.subscribe(params => {
+      this.route.paramMap.subscribe(params => {
       const recepcionId = params.get('id');
       const state = history.state;
      

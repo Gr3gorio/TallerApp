@@ -175,14 +175,20 @@ boards = [
     event.preventDefault();
   }
 
-  navegarADetalle(id: string) {
+  /*
+  No implemnetar porque se renderiza mal solo era para ver el pase de los datos
+
+  navegarADetalle(recepcion: any) {
    console.log("funciona");
-   this.utilsSvc.routerLink(`/detalle-recepcion/${id}`);
+    this.utilsSvc.saveInLocalStorage('recepcion' , this.recepcion); intente guardar en el storage
    
-  }
+   
+   this.utilsSvc.routerLink(`/detalle-recepcion/${this.recepcion}`);
+   
+  }*/
 
   mostrarDatosRecepcion(recepcion: any) {
-    console.log('Datos de la recepción:', recepcion);
+    //console.log('Datos de la recepción:', recepcion);
     // Puedes hacer lo que necesites con los datos de la recepción aquí, como navegar a otra página.
     
     this.router.navigate(['detalle-recepcion', recepcion.id], {
