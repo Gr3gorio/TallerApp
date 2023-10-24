@@ -19,7 +19,8 @@ export class HomePage implements OnInit {
   constructor(
     private firebaseSvc: FirebaseService,
     private utilsSvc: UtilsService,
-    private router: Router
+    private router: Router,
+    
   ) { }
 
  
@@ -107,6 +108,47 @@ boards = [
     this.sourceBoardIdx = sourceBoardIdx;
   }
 
+  onTouchStart(recepcionId: string, sourceBoardIdx: number) {
+    
+    
+    this.draggingTask = recepcionId;
+    this.sourceBoardIdx = sourceBoardIdx;
+  }
+
+  onTouchMove(event: TouchEvent, targetBoardIdx: number) {
+    event.preventDefault(); // Previene el comportamiento predeterminado del evento táctil
+    if (this.draggingTask !== null && this.sourceBoardIdx !== null) {
+      
+      
+      // Mover la tarea a otro tablero
+      if (this.sourceBoardIdx === targetBoardIdx) {
+        
+        // Tarea regresa al mismo tablero, no se hace nada
+      } else {
+
+        // Mover tarea a otro tablero
+        const taskToMove = this.boards[this.sourceBoardIdx].recepcion.find((recepcion) => recepcion.id === this.draggingTask);
+        if (taskToMove) {
+          // Agrega la tarea al nuevo tablero
+          this.boards[targetBoardIdx].recepcion.push(taskToMove);
+          
+  
+          // Elimina la tarea del tablero anterior
+          this.boards[this.sourceBoardIdx].recepcion = this.boards[this.sourceBoardIdx].recepcion.filter(
+            (recepcion) => recepcion.id !== this.draggingTask
+          );
+        }
+      }
+      this.sourceBoardIdx = null;
+      this.draggingTask = null;
+    }
+  }
+  
+  
+
+
+
+
   onDrop(targetBoardIdx: number) {
     if (this.draggingTask !== null && this.sourceBoardIdx !== null) {
       if (this.sourceBoardIdx === targetBoardIdx) {
@@ -142,9 +184,14 @@ boards = [
   mostrarDatosRecepcion(recepcion: any) {
     console.log('Datos de la recepción:', recepcion);
     // Puedes hacer lo que necesites con los datos de la recepción aquí, como navegar a otra página.
+    
     this.router.navigate(['detalle-recepcion', recepcion.id], {
-      state: { recepcion }, // Pasa los datos de la recepción como estado
+     state: { recepcion }, // Pasa los datos de la recepción como estado
+
     });
+
   }
+
+
 
 }

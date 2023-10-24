@@ -5,17 +5,21 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="4" *ngFor="let board of boards; let targetBoardIdx = index">
+      <ion-col size="12" size-md="4" *ngFor="let board of boards; let targetBoardIdx = index">
         <div class="board">
           <h2>{{ board.title }}</h2>
           <div class="recepcion-container"
                (drop)="onDrop(targetBoardIdx)"
-               (dragover)="allowDrop($event)">
+               (dragover)="allowDrop($event)"
+                (touchmove)="onTouchMove($event , targetBoardIdx)"
+               
+               >
             <div *ngFor="let recepcion of board.recepcion"
                  class="recepcion" 
                  (click)="navegarADetalle(recepcion.id)"
                  (click)="mostrarDatosRecepcion(recepcion)"
                  (dragstart)="onDragStart(recepcion.id, targetBoardIdx)"
+                 (touchstart)="onTouchStart(recepcion.id, targetBoardIdx)"
                  draggable="true">
                  Titulo : {{ recepcion.name }} - Patente : {{ recepcion.patente }}
             </div>

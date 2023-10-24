@@ -23,6 +23,7 @@ export class DetalleRecepcionPage implements OnInit {
     
   ) { 
 
+    
     this.route.paramMap.subscribe(params => {
       const recepcionId = params.get('id');
       const state = history.state;

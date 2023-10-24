@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,9 @@ export class UtilsService {
     private loadignCtrl: LoadingController,
     private toastCtrl: ToastController,
     private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+   
+
   ) { }
 
   

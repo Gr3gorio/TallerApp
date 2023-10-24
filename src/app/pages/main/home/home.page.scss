@@ -25,6 +25,7 @@
     border-radius: 5px;
     margin: 5px 0;
     cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
+    touch-action: manipulation;
   }
   
   /* Estilo cuando se arrastra una tarjeta */
@@ -32,8 +33,5 @@
     opacity: 0.7;
   }
 
-  .recepcion {
-    /* Otros estilos */
-    touch-action: manipulation; /* Habilita el arrastre en dispositivos táctiles */
-  }
+  
   
