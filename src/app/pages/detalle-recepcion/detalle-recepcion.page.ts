@@ -37,10 +37,16 @@ export class DetalleRecepcionPage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-   
-    
+  sendWhatsapp(){
+    console.log("envia a whatsapp: ", this.recepcion);
+    let url= `https://api.whatsapp.com/send?phone=${this.recepcion.numWpp}&text=*_TallerMecanico_*%0A*Nombre:*%0A${this.recepcion.name}%0A*Patente:*%0A${this.recepcion.patente}%0A*Monto:*%0A${this.recepcion.monto}`;
+    window.open(url)
   }
 
+  sendEmail() {
+    console.log("envia por gmail: ", this.recepcion);
+    
+  }
 }

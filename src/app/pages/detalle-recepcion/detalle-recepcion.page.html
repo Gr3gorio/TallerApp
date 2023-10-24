@@ -4,7 +4,7 @@
   <ion-card>
     <ion-card-content>
       <ion-avatar>
-        <img [src]= "recepcion.image"/>
+        <img [src]="recepcion.image" />
       </ion-avatar>
       <h2>{{ recepcion.name }}</h2>
       <p>Patente: {{ recepcion.patente }}</p>
@@ -13,7 +13,15 @@
       <p>Reparacion : {{recepcion.reparacion}}</p>
       <p>Monto : {{recepcion.monto}}</p>
       <!-- Otros campos de la recepción -->
+      <ion-button (click)="sendWhatsapp()" color="success">
+        <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+        Enviar por WhatsApp
+      </ion-button>
+      <ion-button (click)="sendEmail()" color="danger">
+        <ion-icon slot="start" name="logo-whatsapp"></ion-icon>
+        Enviar por Gmail
+      </ion-button>
     </ion-card-content>
-  </ion-card>
+  </ion-card>  
 
 </ion-content>

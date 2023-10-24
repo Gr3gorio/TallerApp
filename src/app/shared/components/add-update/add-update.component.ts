@@ -19,7 +19,8 @@ export class AddUpdateComponent  implements OnInit {
     tipoVehiculo: new FormControl('', [Validators.required]),
     patente: new FormControl('', [Validators.required, Validators.minLength(4)]),
     reparacion: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    monto: new FormControl('', [Validators.required, Validators.min(0)])
+    monto: new FormControl('', [Validators.required, Validators.min(0)]),
+    numWpp: new FormControl('', [Validators.required, Validators.min(10)])
   })
 
   

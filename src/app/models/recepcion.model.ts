@@ -8,4 +8,5 @@ export interface Recepcion
         name: string,
         tipoVehiculo: string,
         image: string
+        numWpp: number
     }
