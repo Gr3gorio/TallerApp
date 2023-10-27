@@ -12,7 +12,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 export class AddUpdateComponent  implements OnInit {
 
   form = new FormGroup({
-    id: new FormControl(''),
+    
     image: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required, Validators.minLength(4)]),
     fechaIngreso: new FormControl('', [Validators.required]),
@@ -59,6 +59,8 @@ export class AddUpdateComponent  implements OnInit {
       let imagePath = `${this.user.uid}/${Date.now()}`;
       let imageUrl =await this.firebaseSvc.uploadImage(imagePath,dataUrl);
       this.form.controls.image.setValue(imageUrl);
+
+      
 
       this.firebaseSvc.addDocument(path,this.form.value).then(async res => {
 

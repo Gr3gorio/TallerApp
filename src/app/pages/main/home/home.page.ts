@@ -31,16 +31,7 @@ boards = [
   {
     title: 'Recepción',
     recepcion: [
-      {
-        id: 'ID-123',
-        patente: 'ABC123',
-        name:'XYZ'
-      },
-      {
-        id: 'ID-124',
-        patente: 'XYZ789',
-        name:"yyy"
-      },
+     
     ],
   },
   {
@@ -59,38 +50,42 @@ boards = [
   }
 
   user(): User{
+
     return this.utilsSvc.getFromLocalStorage('user');
     
   }
+  
   ionViewWillEnter(){
     this.getRecepcion();
+    
   }
+  
 
   //Obtener las rececpiones
-  getRecepcion(){
-    let path = `users/${this.user().uid}/recepcion`;
+  async getRecepcion(){
+
+     
+    let path = `users/${this.user().uid}/recepcion`
+     console.log("muestrame"+path);
+     
 
     let sub = this.firebaseSvc.getCollectionData(path).subscribe({
-      next:(res:any)=>{
+      next: (res: any) => {
         console.log(res);
-         // Filtra las recepciones que tengan tanto un ID como una patente
+        this.recepcion = res;
+        // Filtra las recepciones que tengan tanto un ID como una patente
         const recepcionesValidas = res.filter((recepcion: any) => recepcion.id && recepcion.name && recepcion.patente);
         this.boards[0].recepcion = recepcionesValidas;
-        this.recepcion = res;
+
         sub.unsubscribe();
-        
+
       }
-
-      
     })
+  
 
   }
 
-  //--Cerrar sesion----
-
-  signOut() {
-    this.firebaseSvc.signOut();
-  }
+  
 
    //--Agregar o Actualizar recepcion----
 
@@ -110,6 +105,7 @@ boards = [
 
   onTouchStart(recepcionId: string, sourceBoardIdx: number) {
     
+    console.log("primer toque");
     
     this.draggingTask = recepcionId;
     this.sourceBoardIdx = sourceBoardIdx;
@@ -117,6 +113,8 @@ boards = [
 
   onTouchMove(event: TouchEvent, targetBoardIdx: number) {
     event.preventDefault(); // Previene el comportamiento predeterminado del evento táctil
+    console.log("funciona");
+    
     if (this.draggingTask !== null && this.sourceBoardIdx !== null) {
       
       
@@ -196,6 +194,12 @@ boards = [
 
     });
 
+  }
+
+  //--Cerrar sesion----
+
+  signOut() {
+    this.firebaseSvc.signOut();
   }
 
 
