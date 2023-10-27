@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController, ModalController, ModalOptions, ToastController, ToastOptions } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +15,23 @@ export class UtilsService {
     private loadignCtrl: LoadingController,
     private toastCtrl: ToastController,
     private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private http: HttpClient
   ) { }
 
-  
+  sendMessage(data: any): Observable<any> {
+    const apiUrl = `https://graph.facebook.com/${environment.version}/${environment.phoneNumberID}/messages`; // Utiliza las variables de entorno
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${environment.userAccessToken}`, // Utiliza el token de acceso de las variables de entorno
+      'Content-Type': 'application/json', // Ajusta el tipo de contenido según la API
+    });
+
+    return this.http.post(apiUrl, data, { headers });
+  }
 
 
-async takePicture (promptLabelHeader:string) {
+  async takePicture (promptLabelHeader:string) {
   return await Camera.getPhoto({
     quality: 90,
     allowEditing: true,
@@ -33,7 +46,7 @@ async takePicture (promptLabelHeader:string) {
 
 
  
-};
+  };
 
   //----------LOADING
   loading() {
