@@ -50,22 +50,31 @@ boards = [
   }
 
   user(): User{
-
     return this.utilsSvc.getFromLocalStorage('user');
     
   }
   
-  ionViewWillEnter(){
-    this.getRecepcion();
-    
+  async ionViewWillEnter() {
+    try {
+      const userData = await this.user();
+      if (userData) {
+        const uid = userData.uid;
+        await this.getRecepcion(uid); 
+      } else {
+        console.error("Los datos del usuario no están disponibles.");
+      }
+    } catch (error) {
+      console.error("Error al obtener los datos del usuario:", error);
+    }
   }
+  
   
 
   //Obtener las rececpiones
-  async getRecepcion(){
+  async getRecepcion(uid){
 
      
-    let path = `users/${this.user().uid}/recepcion`
+    let path = `users/${uid}/recepcion`
      console.log("muestrame"+path);
      
 
