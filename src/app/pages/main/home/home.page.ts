@@ -11,11 +11,11 @@ import { AddUpdateComponent } from 'src/app/shared/components/add-update/add-upd
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage  {
 
   draggingTask: string | null = null;
   sourceBoardIdx: number | null = null;
-
+  recepcion : Recepcion[] = [] ;  
   constructor(
     private firebaseSvc: FirebaseService,
     private utilsSvc: UtilsService,
@@ -23,27 +23,24 @@ export class HomePage implements OnInit {
     
   ) { }
 
- 
+  boards = [
+    {
+      title: 'Recepción',
+      recepcion: [
+      
+      ],
+    },
+    {
+      title: 'Trabajando',
+      recepcion: [],
+    },
+    {
+      title: 'Finalizado',
+      recepcion: [],
+    },
+  ];
 
-recepcion : Recepcion[] = [] ;
-
-boards = [
-  {
-    title: 'Recepción',
-    recepcion: [
-     
-    ],
-  },
-  {
-    title: 'Trabajando',
-    recepcion: [],
-  },
-  {
-    title: 'Finalizado',
-    recepcion: [],
-  },
-];
-
+  
   ngOnInit() {
 
     
@@ -53,31 +50,18 @@ boards = [
     return this.utilsSvc.getFromLocalStorage('user');
     
   }
-  
-  async ionViewWillEnter() {
-    try {
-      const userData = await this.user();
-      if (userData) {
-        const uid = userData.uid;
-        await this.getRecepcion(uid); 
-      } else {
-        console.error("Los datos del usuario no están disponibles.");
-      }
-    } catch (error) {
-      console.error("Error al obtener los datos del usuario:", error);
-    }
+
+  ionViewWillEnter() {
+    this.getRecepcion();
+    
   }
-  
-  
 
-  //Obtener las rececpiones
-  async getRecepcion(uid){
-
+  // Obtener las rececpiones
+  getRecepcion(){
      
-    let path = `users/${uid}/recepcion`
-     console.log("muestrame"+path);
+    let path = `users/${this.user().uid}/recepcion`
+    console.log("path: "+ path);
      
-
     let sub = this.firebaseSvc.getCollectionData(path).subscribe({
       next: (res: any) => {
         console.log(res);
@@ -90,8 +74,6 @@ boards = [
 
       }
     })
-  
-
   }
 
   
