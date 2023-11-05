@@ -15,7 +15,7 @@ import { AddUpdateComponent } from 'src/app/shared/components/add-update/add-upd
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage  {
 
   draggingTask: string | null = null;
   sourceBoardIdx: number | null = null;
@@ -76,12 +76,11 @@ ngOnInit() {
 }
 
   user(): User{
-
     return this.utilsSvc.getFromLocalStorage('user');
     
   }
-  
-  ionViewWillEnter(){
+
+  ionViewWillEnter() {
     this.getRecepcion();
     
   }
@@ -94,11 +93,12 @@ ngOnInit() {
   //Obtener las rececpiones
    /*getRecepcion(){
 
+  // Obtener las rececpiones
+  getRecepcion(){
      
     let path = `users/${this.user().uid}/recepcion`
-     console.log("muestrame"+path);
+    console.log("path: "+ path);
      
-
     let sub = this.firebaseSvc.getCollectionData(path).subscribe({
       next: (res: any) => {
         console.log(res);

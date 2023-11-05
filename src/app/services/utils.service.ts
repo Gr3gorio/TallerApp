@@ -65,7 +65,7 @@ async takePicture (promptLabelHeader:string) {
 
   getFromLocalStorage(key: string) {
     return JSON.parse(localStorage.getItem(key))
-  }
+  }  
 
   // --Modal
 
