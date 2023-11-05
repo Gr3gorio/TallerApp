@@ -11,65 +11,21 @@
           <div class="recepcion-container"
                (drop)="onDrop(targetBoardIdx)"
                (dragover)="allowDrop($event)"
-                
-               
-               >
-            <!--<div *ngFor="let recepcion of board.recepcion"
-                 class="recepcion" 
-                 
-                 (click)="mostrarDatosRecepcion(recepcion)"
+              >
 
-                 (dragstart)="onDragStart(recepcion.id, targetBoardIdx)"
-                 (touchstart)="onTouchStart(recepcion.id, targetBoardIdx)"
-                 (touchmove)="onTouchMove($event , targetBoardIdx)"
-                 draggable="true">
-                 Titulo : {{ recepcion.name }} - Patente : {{ recepcion.patente }}
-                 
-            </div>
-            <div *ngFor="let recepcion of board.recepcion; let i = index" class="recepcion" #recepcionCard
-            
-            (dragstart)="onDragStart(recepcion.id, targetBoardIdx, $event)"
-
-            (touchstart)="onDragStart(recepcion.id, targetBoardIdx, $event)"
-
-            (touchstart)="onTouchStart(recepcion.id, targetBoardIdx, i, $event)"
-            (touchmove)="onTouchMove($event , targetBoardIdx ,i)"  
+       <div *ngFor="let recepcion of board.recepcion; let i = index" class="recepcion" #recepcionCard            
+            (dragstart)="onDragStart(recepcion.id, targetBoardIdx, $event)"              
             draggable="true">
             Titulo : {{ recepcion.name }} - Patente : {{ recepcion.patente }}
-            <ion-chip *ngIf="isMobileDevice()" (click)="avanzarPanel(recepcion.id)">Avanzar</ion-chip><ion-chip *ngIf="isMobileDevice()" (click)="retrocederPanel(recepcion.id)">Retroceder</ion-chip>
-            <br><ion-chip (click)="mostrarDatosRecepcion(recepcion)">Detalle</ion-chip>
-       </div>-->
-
-       <div *ngFor="let recepcion of board.recepcion; let i = index" class="recepcion" #recepcionCard
-            
-            (dragstart)="onDragStart(recepcion.id, targetBoardIdx, $event)"
-
-            
-
-              
-            draggable="true">
-            Titulo : {{ recepcion.name }} - Patente : {{ recepcion.patente }}
-            <ion-chip *ngIf="isMobileDevice()" (click)="avanzarPanel(recepcion.id)">Avanzar</ion-chip><ion-chip *ngIf="isMobileDevice()" (click)="retrocederPanel(recepcion.id)">Retroceder</ion-chip>
             <br><ion-chip (click)="mostrarDatosRecepcion(recepcion)">Detalle</ion-chip>
        </div>
-       
-       
-
-         
-
           </div>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  
-  
-  
-
-  
-
-  
+    
 
   <!--NUEVA RECEPCION-->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
