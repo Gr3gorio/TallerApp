@@ -1,44 +1,61 @@
 /* Estilo general del tablero */
 .board {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 10px;
-  }
-  
-  /* Estilo del contenedor de recepciones */
-  .recepcion-container {
-    min-height: 100px; /* Altura mínima para permitir el arrastre y soltado */
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 10px 0;
-    position: relative;
-  }
-  
-  /* Estilo de las tarjetas de recepción */
-  .recepcion {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 5px 0;
-    cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
-    touch-action: manipulation;
-  
-  
-  //* Estilo de transformación */
-  transform: translate(0, 0); /* Inicialmente sin transformación */
-  transition: transform 0.2s; /* Transición suave de 0.2 segundos al aplicar la transformación */
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+/* Estilo del contenedor de recepciones */
+.recepcion-container {
+  min-height: 100px; /* Altura mínima para permitir el arrastre y soltado */
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+/* Estilo de las tarjetas de recepción */
+.recepcion {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 5px 0;
+  cursor: pointer; /* Cambia el cursor al pasar sobre la tarjeta */
+  touch-action: manipulation;
 }
 
 /* Estilo cuando se arrastra una tarjeta */
 .recepcion:active {
   opacity: 0.7;
-  transform: scale(1.05); /* Ejemplo de transformación al hacer clic */
 }
 
-  
-  
+
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.button-container {
+  height: 50 px;
+  min-width: 137px;
+}
+
+@media (min-width: 768px) {
+  .button-container {
+    display: none;
+  }
+}
+
+.text {
+  flex-grow: 1; /* Esto permite que el texto ocupe todo el espacio disponible */
+}
+
+ion-button {
+  margin: 1 px;
+  padding: 0 px;
+}

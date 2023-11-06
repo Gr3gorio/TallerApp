@@ -19,7 +19,8 @@ export class AddUpdateComponent  implements OnInit {
     tipoVehiculo: new FormControl('', [Validators.required]),
     patente: new FormControl('', [Validators.required, Validators.minLength(4)]),
     reparacion: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    monto: new FormControl('', [Validators.required, Validators.min(0)])
+    monto: new FormControl('', [Validators.required, Validators.min(0)]),
+    posicion: new FormControl(0,)
   })
 
   
@@ -63,6 +64,8 @@ export class AddUpdateComponent  implements OnInit {
       
 
       this.firebaseSvc.addDocument(path,this.form.value).then(async res => {
+
+        console.log(this.form.value);
 
         this.utilsSvc.dismissModal({success :true});
 

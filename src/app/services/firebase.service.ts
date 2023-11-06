@@ -58,7 +58,6 @@ export class FirebaseService {
   signOut() {
     getAuth().signOut();
     localStorage.removeItem('user');
-    localStorage.removeItem('boards');
     this.utilsSvc.routerLink('/auth');
   }
 
@@ -75,7 +74,7 @@ export class FirebaseService {
 
   //Setear un Documento (crea un documento o reemplaza si es que existe)
 
-  setDocument(path: string, data: any) {
+  async setDocument(path: string, data: any) {
 
     return setDoc(doc(getFirestore(), path), data);
 
