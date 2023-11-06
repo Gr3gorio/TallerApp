@@ -5,19 +5,36 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="4" *ngFor="let board of boards; let targetBoardIdx = index">
+      <ion-col size="12" size-md="4" *ngFor="let board of boards; let targetBoardIdx = index">
         <div class="board">
           <h2>{{ board.title }}</h2>
           <div class="recepcion-container"
                (drop)="onDrop(targetBoardIdx)"
-               (dragover)="allowDrop($event)">
+               (dragover)="allowDrop($event)"
+               id= "{{ board.title }}"
+               >
             <div *ngFor="let recepcion of board.recepcion"
                  class="recepcion" 
-                 (click)="navegarADetalle(recepcion.id)"
+                 (dragstart)="onDragStart(recepcion.id, targetBoardIdx)"                 
                  (click)="mostrarDatosRecepcion(recepcion)"
-                 (dragstart)="onDragStart(recepcion.id, targetBoardIdx)"
                  draggable="true">
-                 Titulo : {{ recepcion.name }} - Patente : {{ recepcion.patente }}
+                 <div class="content-container">
+                    <div>
+                    Titulo : {{ recepcion.name }} - Patente : {{ recepcion.patente }}
+                    </div>
+                    
+                    <div class="button-container ion-text-right .ion-hide-md-up">
+                          <ion-button mode="ios" class="submit" size="small" type="submit" (click)="mostrarDatosRecepcion(recepcion)">
+                            <ion-icon name="eye-outline"></ion-icon>
+                          </ion-button>
+                          <ion-button mode="ios" class="submit" size="small" type="submit" (click)="bajarActividad($event, recepcion, targetBoardIdx)">
+                            <ion-icon name="arrow-down-outline"></ion-icon>
+                          </ion-button>
+                          <ion-button mode="ios" class="submit" size="small" type="submit" (click)="subirActividad($event, recepcion, targetBoardIdx)">
+                            <ion-icon name="arrow-up-outline"></ion-icon>
+                          </ion-button>
+                    </div>
+                  </div>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ import { UtilsService } from 'src/app/services/utils.service';
 export class AddUpdateComponent  implements OnInit {
 
   form = new FormGroup({
-    id: new FormControl(''),
+    
     image: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required, Validators.minLength(4)]),
     fechaIngreso: new FormControl('', [Validators.required]),
@@ -20,7 +20,11 @@ export class AddUpdateComponent  implements OnInit {
     patente: new FormControl('', [Validators.required, Validators.minLength(4)]),
     reparacion: new FormControl('', [Validators.required, Validators.minLength(4)]),
     monto: new FormControl('', [Validators.required, Validators.min(0)]),
+<<<<<<< HEAD
     numWpp: new FormControl('', [Validators.required, Validators.min(10)])
+=======
+    posicion: new FormControl(0,)
+>>>>>>> 3f82532a40d97d5629ba6afd260818885745ad26
   })
 
   
@@ -61,7 +65,11 @@ export class AddUpdateComponent  implements OnInit {
       let imageUrl =await this.firebaseSvc.uploadImage(imagePath,dataUrl);
       this.form.controls.image.setValue(imageUrl);
 
+      
+
       this.firebaseSvc.addDocument(path,this.form.value).then(async res => {
+
+        console.log(this.form.value);
 
         this.utilsSvc.dismissModal({success :true});
 

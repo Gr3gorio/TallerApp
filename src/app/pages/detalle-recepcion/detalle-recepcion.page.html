@@ -1,7 +1,9 @@
-<app-header title="Detalle Recepcion"></app-header>
+<app-header backButton="/main/home" title="Detalle Recepcion"></app-header>
+
+
 <ion-content>
 
-  <ion-card>
+  <ion-card *ngIf="recepcion">
     <ion-card-content>
       <ion-avatar>
         <img [src]="recepcion.image" />
@@ -21,4 +23,5 @@
 
   </ion-card>  
 
+  
 </ion-content>

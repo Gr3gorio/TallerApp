@@ -6,16 +6,28 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
   private apiUrl: string;
 
+<<<<<<< HEAD
   constructor ( private loadignCtrl: LoadingController, private toastCtrl: ToastController, 
               private router: Router, private modalCtrl: ModalController, private http: HttpClient) { 
     this.apiUrl = `https://graph.facebook.com/${environment.version}/${environment.phoneNumberID}/messages`;
   }
+=======
+  constructor(
+    private loadignCtrl: LoadingController,
+    private toastCtrl: ToastController,
+    private router: Router,
+    private modalCtrl: ModalController,
+   
+
+  ) { }
+>>>>>>> 3f82532a40d97d5629ba6afd260818885745ad26
 
   sendMessage(data: any): Observable<any> {
     const headers = this.createHeaders();
@@ -74,7 +86,7 @@ export class UtilsService {
 
   getFromLocalStorage(key: string) {
     return JSON.parse(localStorage.getItem(key))
-  }
+  }  
 
   // --Modal
 

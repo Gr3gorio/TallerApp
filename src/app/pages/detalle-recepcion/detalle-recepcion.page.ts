@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Recepcion } from 'src/app/models/recepcion.model';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -14,7 +14,7 @@ import { ModalController, ToastController } from '@ionic/angular';
 })
 export class DetalleRecepcionPage implements OnInit {
 
-  recepcion: Recepcion;
+  @Input() recepcion: Recepcion;
   dataToSend: any; 
   isButtonDisabled = false;
 

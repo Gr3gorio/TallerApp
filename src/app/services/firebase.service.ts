@@ -74,7 +74,7 @@ export class FirebaseService {
 
   //Setear un Documento (crea un documento o reemplaza si es que existe)
 
-  setDocument(path: string, data: any) {
+  async setDocument(path: string, data: any) {
 
     return setDoc(doc(getFirestore(), path), data);
 
