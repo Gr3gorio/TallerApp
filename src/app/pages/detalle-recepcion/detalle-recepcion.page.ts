@@ -62,7 +62,7 @@ export class DetalleRecepcionPage implements OnInit {
       if (this.isMessageSentSuccessfully(response)) {
         this.showSuccessToast();
       } else {
-        this.showErrorToast(); // Opcional: Muestra un mensaje de error si el envío no fue exitoso.
+        this.showErrorToast(); 
       }
       this.isButtonDisabled = true;
     });
