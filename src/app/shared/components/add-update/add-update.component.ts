@@ -20,11 +20,8 @@ export class AddUpdateComponent  implements OnInit {
     patente: new FormControl('', [Validators.required, Validators.minLength(4)]),
     reparacion: new FormControl('', [Validators.required, Validators.minLength(4)]),
     monto: new FormControl('', [Validators.required, Validators.min(0)]),
-<<<<<<< HEAD
-    numWpp: new FormControl('', [Validators.required, Validators.min(10)])
-=======
+    numWpp: new FormControl('', [Validators.required, Validators.min(10)]),
     posicion: new FormControl(0,)
->>>>>>> 3f82532a40d97d5629ba6afd260818885745ad26
   })
 
   
