@@ -10,26 +10,25 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UtilsService {
+  private apiUrl: string;
 
-  constructor(
-    private loadignCtrl: LoadingController,
-    private toastCtrl: ToastController,
-    private router: Router,
-    private modalCtrl: ModalController,
-    private http: HttpClient
-  ) { }
-
-  sendMessage(data: any): Observable<any> {
-    const apiUrl = `https://graph.facebook.com/${environment.version}/${environment.phoneNumberID}/messages`; // Utiliza las variables de entorno
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${environment.userAccessToken}`, // Utiliza el token de acceso de las variables de entorno
-      'Content-Type': 'application/json', // Ajusta el tipo de contenido según la API
-    });
-
-    return this.http.post(apiUrl, data, { headers });
+  constructor ( private loadignCtrl: LoadingController, private toastCtrl: ToastController, 
+              private router: Router, private modalCtrl: ModalController, private http: HttpClient) { 
+    this.apiUrl = `https://graph.facebook.com/${environment.version}/${environment.phoneNumberID}/messages`;
   }
 
+  sendMessage(data: any): Observable<any> {
+    const headers = this.createHeaders();
+
+    return this.http.post(this.apiUrl, data, { headers });
+  }
+
+  private createHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': `Bearer ${environment.userAccessToken}`,
+      'Content-Type': 'application/json',
+    });
+  }
 
   async takePicture (promptLabelHeader:string) {
   return await Camera.getPhoto({

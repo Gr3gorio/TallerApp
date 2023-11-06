@@ -5,7 +5,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { Observable } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
 import { environment } from 'src/environments/environment';
-import { AlertController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle-recepcion',
@@ -16,8 +16,10 @@ export class DetalleRecepcionPage implements OnInit {
 
   recepcion: Recepcion;
   dataToSend: any; 
+  isButtonDisabled = false;
 
-  constructor(private utilsSvc : UtilsService, private route: ActivatedRoute, private alertController: AlertController,) { 
+  constructor(private utilsSvc : UtilsService, private route: ActivatedRoute, private toastController: ToastController
+    ) { 
     
     this.route.paramMap.subscribe(params => {
       const recepcionId = params.get('id');
@@ -32,7 +34,7 @@ export class DetalleRecepcionPage implements OnInit {
         this.dataToSend = {
           messaging_product: "whatsapp",
           recipient_type: "individual",
-          to: environment.recipientPhoneNumber,
+          to: this.recepcion.numWpp,
           type: "text",
           text: {
             preview_url: false,
@@ -55,7 +57,41 @@ export class DetalleRecepcionPage implements OnInit {
   // Realiza la solicitud HTTP POST
   async sendWhatsapp() {
     this.utilsSvc.sendMessage(this.dataToSend).subscribe(response => {
-      console.log("Respuesta de la API de WhatsApp:", response);
+      console.log("Respuesta de la API:", response);
+      
+      if (this.isMessageSentSuccessfully(response)) {
+        this.showSuccessToast();
+      } else {
+        this.showErrorToast(); // Opcional: Muestra un mensaje de error si el envío no fue exitoso.
+      }
+      this.isButtonDisabled = true;
     });
-  }  
+  }
+  
+  isMessageSentSuccessfully(response) {
+    return response && response.messages && response.messages.length > 0;
+  }
+  
+  async showSuccessToast() {
+    const toast = await this.toastController.create({
+      message: 'Mensaje enviado con éxito',
+      duration: 2000,
+      position: 'middle',
+      color: 'success'
+    });
+  
+    toast.present();
+  }
+  
+  async showErrorToast() {
+    const toast = await this.toastController.create({
+      message: 'Error en el envío del mensaje',
+      duration: 2000,
+      position: 'middle',
+      color: 'danger' 
+    });
+  
+    toast.present();
+  }
+  
 }

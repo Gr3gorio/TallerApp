@@ -1,3 +1,5 @@
+
+
 export const environment = {
   production: false,
 
@@ -12,7 +14,7 @@ export const environment = {
 
   version: "v17.0",
   phoneNumberID: "136058459599030",
-  recipientPhoneNumber: "541164830030",
-  userAccessToken: "EAAQFNjDzlWQBO5T1swnzqHV2IfRGTNnd2sRk9v9ZAbj76ciF4LOEAo6OwMmLeminDHYtahO21W5HsJexCpP6Sgnc8tkL5hWqGatB0o2z9ZCCOmuB3xLbwJlXgGgRPqr5hZBMXoDzTxGjpdYXD9wpnKAHW1fPLZCQ6NZAOg1ZCuZBDZCA8wYyF6DZB461BGyLIQGYZARxM8Bt999uHM8qNRr5MZD"
+  recipientPhoneNumber: null,
+  userAccessToken: "EAADSqWXUj20BO1YSGWRZAHDXFO4J2ZBJNnhiFQhdHguZBtyeF8RAfU5XNl5S3OzpfoEXZBinu1ooVS6aKCpQCG7zTaZBapke4PxBOY82zOVrXs1V4emrXyLMVVZBHnpQeRGVN7dpYENzP3bqQptQqYcIjcP9hJ9mpDRFpSCQhiK1z6XnZB1ukRSkRofs8SKOZAlfnwZCqA2DZBtMkBTB1ZCN0HVK6s9N1zxwlSt4zMZBJcEZD"
 
 };
