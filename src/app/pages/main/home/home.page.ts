@@ -132,6 +132,7 @@ export class HomePage implements OnInit {
   }
 
   
+  
 
   onDrop(targetBoardIdx: number) {
     const userData = this.user();
