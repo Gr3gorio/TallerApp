@@ -1,0 +1,14 @@
+<app-header [isModal]='true' title="Confirmar borrado"></app-header>
+<ion-content>
+
+  <ion-button   mode="ios" backButton="/main/home" (click)="dismissModal()" class="ion-margin">
+    Cancelar
+    <ion-icon slot="end"></ion-icon>
+  </ion-button>
+
+  <ion-button   mode="ios" class="ion-margin" type="submit" (click)="borrarActividad(recepcion)">
+    Borrar
+    <ion-icon slot="end"></ion-icon>
+  </ion-button>
+
+</ion-content>

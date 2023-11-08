@@ -22,7 +22,10 @@ export class HomePage implements OnInit {
     private router: Router,
     //private elref: ElementRef,
     
-  ) { }
+  ) { 
+      const usuario = this.user();
+      this.getRecepcion(usuario);
+  }
 
  
 
