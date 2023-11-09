@@ -38,6 +38,14 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     this.getRecepcion(); 
   }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      this.getRecepcion();
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
+  }
   
   
 
