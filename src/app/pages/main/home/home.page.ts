@@ -34,27 +34,17 @@ export class HomePage implements OnInit {
     
   }
   
-  async ionViewWillEnter() {
-    try {
-      const userData = await this.user();
-      if (userData) {
-        const uid = userData.uid;
-        await this.getRecepcion(uid); 
-      } else {
-        console.error("Los datos del usuario no están disponibles.");
-      }
-    } catch (error) {
-      console.error("Error al obtener los datos del usuario:", error);
-    }
+  ionViewWillEnter() {
+    this.getRecepcion(); 
   }
   
   
 
   //Obtener las todas las actividades
-  async getRecepcion(uid){
+  getRecepcion(){
 
      
-    let path = `users/${uid}/recepcion`
+    let path = `users/${this.user().uid}/recepcion`
      console.log("muestrame "+path);
      
 
