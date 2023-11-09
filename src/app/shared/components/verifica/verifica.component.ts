@@ -57,6 +57,7 @@ export class VerificaComponent  implements OnInit {
     this.borrar(userData.uid,actividad);
     
     this.router.navigate(['/main/home']);
+    this.dismissModal();
 
   }
 

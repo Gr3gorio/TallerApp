@@ -23,8 +23,6 @@ export class HomePage implements OnInit {
     //private elref: ElementRef,
     
   ) { 
-      const usuario = this.user();
-      this.getRecepcion(usuario);
   }
 
  
