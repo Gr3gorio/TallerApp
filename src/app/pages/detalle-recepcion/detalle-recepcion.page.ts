@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { UtilsService } from 'src/app/services/utils.service';
 import { environment } from 'src/environments/environment';
 import { ModalController, ToastController } from '@ionic/angular';
+import { VerificaComponent } from 'src/app/shared/components/verifica/verifica.component';
 
 @Component({
   selector: 'app-detalle-recepcion',
@@ -93,5 +94,19 @@ export class DetalleRecepcionPage implements OnInit {
   
     toast.present();
   }
+
+  //--Agregar o Actualizar recepcion----
+
+  eliminarActiv(recepcion) {
+    this.utilsSvc.presentModal({
+      component: VerificaComponent,
+      componentProps: {
+        recepcion: recepcion
+      }
+    });
+    
+  }
   
 }
+
+

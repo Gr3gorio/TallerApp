@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, sendPasswordResetEmail } from 'firebase/auth';
 import { User } from '../models/user.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { getFirestore, setDoc, doc, getDoc, addDoc, collection , collectionData , query } from '@angular/fire/firestore';
+import { getFirestore, setDoc, doc, getDoc, addDoc, deleteDoc, collection , collectionData , query } from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { getStorage , uploadString , ref , getDownloadURL } from 'firebase/storage';
@@ -71,6 +71,11 @@ export class FirebaseService {
     return collectionData (query(ref,collectionQuery),{idField : 'id'});
 
   }
+
+  //Borrar un elemento de una colección
+  async deleteDocument(path: string, data: any) {
+    return deleteDoc(doc(getFirestore(),path));
+  } 
 
   //Setear un Documento (crea un documento o reemplaza si es que existe)
 
